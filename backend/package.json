@@ -1,0 +1,30 @@
+{
+  "name": "servive-care-careers",
+  "version": "1.0.0",
+  "description": "job-careers",
+  "homepage": "https://github.com/Sreeragsbabu/service-care-careers#readme",
+  "bugs": {
+    "url": "https://github.com/Sreeragsbabu/service-care-careers/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sreeragsbabu/service-care-careers.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "joi": "^18.2.1",
+    "mongoose": "^9.6.2"
+  }
+}
