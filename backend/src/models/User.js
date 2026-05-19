@@ -1,33 +1,44 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 
-const UserSchema = new Schema({
-  username: {
-    type: String,
-    required: true,
+const USER_ROLES = ["admin", "hr", "user"];
+
+const UserSchema = new Schema(
+  {
+    username: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true,
+      trim: true,
+    },
+    role: {
+      type: String,
+      enum: USER_ROLES,
+      default: "user",
+    },
   },
-  password: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  role: {
-    type: String,
-    enum: ["admin", "hr"],
-    default: "user",
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now,
+  { timestamps: true }
+);
+
+UserSchema.set("toJSON", {
+  transform: (_doc, ret) => {
+    delete ret.password;
+    delete ret.__v;
+    return ret;
   },
 });
 
-module.exports = mongoose.model("User", UserSchema);
+const User = mongoose.model("User", UserSchema);
+User.ROLES = USER_ROLES;
+
+module.exports = User;
