@@ -2,8 +2,8 @@ POST http://localhost:5000/api/v1/users HTTP/1.1
 Content-Type: application/json
 
 {
-  "username": "Anil Kumar",
-  "email": "anilkumar@servicecare.com",
+  "username": "Sreerag",
+  "email": "sreeragsbabu@servicecare.com",
   "password": "password123",
   "role": "admin"
 }
