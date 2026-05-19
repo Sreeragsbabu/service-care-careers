@@ -1,8 +1,11 @@
 const express = require("express");
 const validate = require("../../../middlewares/validate");
 const userController = require("./user.controller");
-const { createUserSchema, idParamSchema } = require("./user.validation");
-const { deleteUser } = require("./user.service");
+const {
+  createUserSchema,
+  updateUserSchema,
+  idParamSchema,
+} = require("./user.validation");
 
 const router = express.Router();
 
@@ -19,6 +22,7 @@ router.delete(
 router.patch(
   "/:id",
   validate(idParamSchema, "params"),
+  validate(updateUserSchema),
   userController.updateUser,
 );
 

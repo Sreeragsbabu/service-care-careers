@@ -31,5 +31,5 @@ Content-Type: application/json
 
 {
   "username": "newusername",
-  "role": "moderator"
+  "role": "hr"
 }

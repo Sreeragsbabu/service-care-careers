@@ -21,16 +21,16 @@ const createUser = async ({ username, email, password, role }) => {
 };
 
 const getUsers = async () => {
-  const users = await User.find().select("-password").lean();
+  const users = await User.find().select("-password -__v").lean();
   return users;
 };
 
 const deleteUser = async (id) => {
   const deletedUser = await User.findByIdAndDelete(id)
-    .select("-password")
+    .select("-password -__v")
     .lean();
   if (!deletedUser) {
-    throw new Error("User not found");
+    throw new AppError(404, "User not found");
   }
 
   return deletedUser;
@@ -71,7 +71,7 @@ const updateUser = async (id, updates) => {
     { $set: filteredUpdates }, // Only update provided fields
     { new: true, runValidators: true },
   )
-    .select("-password")
+    .select("-password -__v")
     .lean();
 
   if (!updatedUser) {
