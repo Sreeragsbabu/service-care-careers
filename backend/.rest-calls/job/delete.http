@@ -1,0 +1,2 @@
+#### Delete a job by ID
+DELETE http://localhost:5000/api/v1/jobs/6a0c074f90925fad65ba364b HTTP/1.1

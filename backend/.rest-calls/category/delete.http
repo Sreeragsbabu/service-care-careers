@@ -1,0 +1,2 @@
+### Delete a category by ID
+DELETE http://localhost:5000/api/v1/categories/6a0c10d6c419aa7967d239e6 HTTP/1.1

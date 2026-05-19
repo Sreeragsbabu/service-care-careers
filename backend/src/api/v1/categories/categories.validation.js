@@ -6,6 +6,11 @@ const createCategorySchema = Joi.object({
   status: Joi.string().valid("active", "inactive").default("active").optional(),
 });
 
+const idParamSchema = Joi.object({
+  id: Joi.string().hex().length(24).required(),
+});
+
 module.exports = {
   createCategorySchema,
+  idParamSchema,
 };

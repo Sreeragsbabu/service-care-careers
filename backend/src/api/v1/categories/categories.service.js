@@ -19,7 +19,24 @@ const getCategories = async () => {
   return categories;
 };
 
+const getActiveCategories = async () => {
+  const categories = await Category.find({ status: "active" })
+    .select("-__v")
+    .lean();
+  return categories;
+};
+
+const deleteCategory = async (id) => {
+  const deletedCategory = await Category.findByIdAndDelete(id).lean();
+  if (!deletedCategory) {
+    throw new AppError(404, "Category not found");
+  }
+  return deletedCategory;
+};
+
 module.exports = {
   createCategory,
   getCategories,
+  getActiveCategories,
+  deleteCategory,
 };

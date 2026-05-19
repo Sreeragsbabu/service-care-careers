@@ -76,22 +76,24 @@ const JobSchema = new Schema(
 );
 
 // Validate salary range
-JobSchema.pre("save", function (next) {
-  if (this.salary.min && this.salary.max && this.salary.min > this.salary.max) {
-    return next(
-      new Error("Minimum salary cannot be greater than maximum salary"),
-    );
-  }
+JobSchema.pre("save", async function () {
   if (
-    this.experience.min &&
-    this.experience.max &&
+    this.salary?.min != null &&
+    this.salary?.max != null &&
+    this.salary.min > this.salary.max
+  ) {
+    throw new Error("Minimum salary cannot be greater than maximum salary");
+  }
+
+  if (
+    this.experience?.min != null &&
+    this.experience?.max != null &&
     this.experience.min > this.experience.max
   ) {
-    return next(
-      new Error("Minimum experience cannot be greater than maximum experience"),
+    throw new Error(
+      "Minimum experience cannot be greater than maximum experience",
     );
   }
-  next();
 });
 
 JobSchema.set("toJSON", {
