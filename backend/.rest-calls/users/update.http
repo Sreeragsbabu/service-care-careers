@@ -1,0 +1,35 @@
+### Update User (PATCH)
+PATCH http://localhost:5000/api/v1/users/6a0bf835712c85bf045a07c5 HTTP/1.1
+Content-Type: application/json
+
+{
+  "role": "hr"
+}
+
+
+### Update Password Only
+PATCH http://localhost:5000/api/v1/users/6a0bf835712c85bf045a07c5 HTTP/1.1
+Content-Type: application/json
+
+{
+  "password": "newpassword123"
+}
+
+
+### Update Email Only
+PATCH http://localhost:5000/api/v1/users/6a0bf835712c85bf045a07c5 HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "newemail@example.com"
+}
+
+
+### Update Multiple Fields
+PATCH http://localhost:5000/api/v1/users/6a0bf835712c85bf045a07c5 HTTP/1.1
+Content-Type: application/json
+
+{
+  "username": "newusername",
+  "role": "hr"
+}
